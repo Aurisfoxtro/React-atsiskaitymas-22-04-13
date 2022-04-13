@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react"
-import Meal from "../meal/Meal"
+import Mealf from "../mealf/Mealf"
 import {Row} from "react-bootstrap"
 
 const Favorites = ()=>{
@@ -16,7 +16,7 @@ console.log('Favorite Meals: ', meals);
 return(
             <Row>       
                 {(meals != null) && meals.map(meal =>
-                <Meal
+                <Mealf
                     key={meal.id}
                     id={meal.id}
                     name={meal.name}

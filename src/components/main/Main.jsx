@@ -22,6 +22,7 @@ const Main = ()=>{
         }else{
             alert('Fill the search bar with a meal name.')
         }
+        if(meals.meals === null){ alert('Nothing found.')}
     }
 
      console.log('meals', meals);
@@ -41,7 +42,7 @@ const Main = ()=>{
                 {console.log('Atrinkti patiekalai: ', meals)}
                 
                 
-             <Row>       
+             <Row>     
                 {((meals.meals != null) && (searchTerm.length > 2)) && meals.meals.map(meal =>
                 <Meal
                     key={meal.idMeal}
@@ -92,7 +93,6 @@ const Main = ()=>{
                 />)
                 }
                 </Row>
-            
         </>
     )
 }

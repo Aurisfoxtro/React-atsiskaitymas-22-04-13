@@ -1,0 +1,14 @@
+table {
+    border: 1px solid black;
+}
+td{
+    padding: 3px 10px;
+}
+.container{
+    display:flex;
+    justify-content: center;
+}
+h2{
+    text-align: center;
+    margin-top: 10px;
+}

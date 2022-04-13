@@ -1,5 +1,5 @@
-import React, {useState, useEffect} from "react";
-import {Row, Button} from "react-bootstrap"
+import React, {useState} from "react";
+import {Row} from "react-bootstrap"
 import Search from "../search/Search";
 import "./Main.css"
 import Meal from "../meal/Meal";
@@ -8,16 +8,21 @@ const Main = ()=>{
     const [meals, setMeals] = useState({});
     const [searchTerm, setSearchTerm] = useState('');
 
-    // (searchTerm.length > 2) &&
-    useEffect(()=>{
+    
+    const handleSubmit = ()=>{
+        if(searchTerm.length > 2){
         try{
-        fetch(`https://www.themealdb.com/api/json/v1/1/search.php?s=${searchTerm}`)
-            .then(response=>response.json())
-            .then(data=>setMeals(data))
-        }catch(msg){
-            console.log(msg)
+            fetch(`https://www.themealdb.com/api/json/v1/1/search.php?s=${searchTerm}`)
+                .then(response=>response.json())
+                .then(data=>setMeals(data))
+            }catch(msg){
+                console.log('Error: ', msg);
+                alert(msg);
+            }
+        }else{
+            alert('Fill the search bar with a meal name.')
         }
-    }, [searchTerm])
+    }
 
      console.log('meals', meals);
     
@@ -28,14 +33,11 @@ const Main = ()=>{
     
     return(
         <>
-            {/* <Row> */}
             <div className="search-container">
                 <div className="search-box">
-                    <Search onSearch={handleInputChange} val={searchTerm}/>
-                    <Button variant="primary">Ieškoti</Button>
+                    <Search onSearch={handleInputChange} onSubmit={handleSubmit} val={searchTerm}/>
                 </div>
             </div>
-                
                 {console.log('Atrinkti patiekalai: ', meals)}
                 
                 
@@ -43,6 +45,7 @@ const Main = ()=>{
                 {((meals.meals != null) && (searchTerm.length > 2)) && meals.meals.map(meal =>
                 <Meal
                     key={meal.idMeal}
+                    id={meal.idMeal}
                     name={meal.strMeal}
                     image={meal.strMealThumb}
                     ingredient1={meal.strIngredient1}

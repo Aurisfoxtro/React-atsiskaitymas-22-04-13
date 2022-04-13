@@ -1,15 +1,69 @@
 import {Card} from "react-bootstrap"
 import "./Meal.css"
 
+let favoritesList = [];
+
 const Meal = (props)=>{
+
+    const handleAddFavorites = () =>{
+    let obj = {}
+    obj["id"] = props.id;
+    obj["name"] = props.name;
+    obj["image"] = props.image;
+    obj["ingredient1"] = props.ingredient1;                
+    obj["measure1"] = props.measure1;
+    obj["ingredient2"] = props.ingredient2;                
+    obj["measure2"] = props.measure2;
+    obj["ingredient3"] = props.ingredient3;                
+    obj["measure3"] = props.measure3;
+    obj["ingredient4"] = props.ingredient4;                
+    obj["measure4"] = props.measure4;
+    obj["ingredient5"] = props.ingredient5;                
+    obj["measure5"] = props.measure5;
+    obj["ingredient6"] = props.ingredient6;                
+    obj["measure6"] = props.measure6;
+    obj["ingredient7"] = props.ingredient7;                
+    obj["measure7"] = props.measure7;
+    obj["ingredient8"] = props.ingredient8;                
+    obj["measure8"] = props.measure8;
+    obj["ingredient9"] = props.ingredient9;                
+    obj["measure9"] = props.measure9;
+    obj["ingredient10"] = props.ingredient10;                
+    obj["measure10"] = props.measure10;
+    obj["ingredient11"] = props.ingredient11;                
+    obj["measure11"] = props.measure11;
+    obj["ingredient12"] = props.ingredient12;                
+    obj["measure12"] = props.measure12;
+    obj["ingredient13"] = props.ingredient13;                
+    obj["measure13"] = props.measure13;
+    obj["ingredient14"] = props.ingredient14;                
+    obj["measure14"] = props.measure14;
+    obj["ingredient15"] = props.ingredient15;                
+    obj["measure15"] = props.measure15;
+    obj["ingredient16"] = props.ingredient16;                
+    obj["measure16"] = props.measure16;
+    obj["ingredient17"] = props.ingredient17;                
+    obj["measure17"] = props.measure17;
+    obj["ingredient18"] = props.ingredient18;                
+    obj["measure18"] = props.measure18;
+    obj["ingredient19"] = props.ingredient19;                
+    obj["measure19"] = props.measure19;
+    obj["ingredient20"] = props.ingredient20;                
+    obj["measure20"] = props.measure20;
+    favoritesList.push(obj);
+    localStorage.setItem('favoritesMeals', JSON.stringify(favoritesList))
+                    
+    }
+
     return(
         
         <Card className="me-2" style={{width:'30rem'}}>
             <h2>{props.name}</h2>
+            <button onClick={handleAddFavorites} className="btn btn-info">Like</button>
             <Card.Body>
                 <div className="container">
                 <Card.Text>
-                    <img className="img-fluid" src={(props.image)?props.image.url:null} alt=""/>
+                    <img className="img-fluid" src={(props.image)?props.image:null} alt=""/>
                     <Card.Title>Ingredients:</Card.Title>
                     <Card.Text>
                         <table>
